@@ -1,0 +1,22 @@
+{
+  "name": "organic-codex",
+  "id": "1629170739504092964",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "documentAccess": "dynamic-page",
+  "editorType": [
+    "figma"
+  ],
+  "networkAccess": {
+    "allowedDomains": [
+      "https://drive.google.com",
+      "https://docs.google.com",
+      "https://drive.usercontent.google.com",
+      "https://lh3.googleusercontent.com",
+      "https://*.googleusercontent.com"
+    ]
+  }
+}

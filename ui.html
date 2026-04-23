@@ -298,6 +298,10 @@
         color: var(--muted);
       }
 
+      .meta-note {
+        margin-top: 6px;
+      }
+
       .status {
         min-height: 20px;
         margin: 12px 0 0;
@@ -348,7 +352,7 @@
           <div id="speaker_name_error" class="field-error"></div>
         </div>
         <div class="field">
-          <label for="d_day">디데이 숫자</label>
+          <label for="d_day">D-day 숫자</label>
           <div class="input-wrap">
             <input id="d_day" name="d_day" inputmode="numeric" pattern="[1-9]" maxlength="1" required />
             <button
@@ -391,7 +395,10 @@
       </form>
       <div id="error" class="error"></div>
       <div id="status" class="status"></div>
-      <div class="meta">기준 위치: 선택 노드 좌표 또는 현재 보이는 캔버스 영역 시작점</div>
+      <div class="meta">
+        <div>기준 위치: 선택 노드 좌표 또는 현재 보이는 캔버스 영역 시작점</div>
+        <div class="meta-note">플러그인 오류시 디자인팀에 문의해주세요</div>
+      </div>
     </div>
 
     <script>

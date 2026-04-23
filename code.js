@@ -925,6 +925,14 @@ function postStatus(message) {
 }
 
 figma.ui.onmessage = async (msg) => {
+  if (msg.type === 'resize-ui') {
+    if (figma.ui && typeof figma.ui.resize === 'function') {
+      const nextHeight = Math.max(560, Math.min(760, Number(msg.height) || 560))
+      figma.ui.resize(360, nextHeight)
+    }
+    return
+  }
+
   if (msg.type !== 'generate') {
     return
   }

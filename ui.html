@@ -248,6 +248,22 @@
       let templates = []
       let uploadedImageBytes = null
 
+      function requestResize() {
+        const panel = document.querySelector('.panel')
+        const panelHeight = panel ? panel.getBoundingClientRect().height : document.body.scrollHeight
+        const nextHeight = Math.ceil(panelHeight + 32)
+
+        parent.postMessage(
+          {
+            pluginMessage: {
+              type: 'resize-ui',
+              height: nextHeight,
+            },
+          },
+          '*',
+        )
+      }
+
       window.addEventListener('message', (event) => {
         const pluginMessage = event.data.pluginMessage
         if (pluginMessage && pluginMessage.type === 'error') {
@@ -259,6 +275,9 @@
           setStatus(pluginMessage.message)
         }
       })
+
+      window.addEventListener('load', requestResize)
+      window.addEventListener('resize', requestResize)
 
       form.addEventListener('submit', async (event) => {
         event.preventDefault()
@@ -325,6 +344,7 @@
           uploadedImageBytes = Array.prototype.slice.call(bytes)
           setError('')
           setStatus('업로드 이미지 준비 완료')
+          requestResize()
         }
         reader.onerror = function () {
           uploadedImageBytes = null
@@ -348,11 +368,15 @@
         if (message) {
           submitButton.disabled = false
         }
+        requestResize()
       }
 
       function setStatus(message) {
         statusNode.textContent = message || ''
+        requestResize()
       }
+
+      requestResize()
     </script>
   </body>
 </html>

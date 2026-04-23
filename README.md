@@ -1,40 +1,31 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# KR 얼리버드 오가닉 생성기
 
-  https://www.figma.com/plugin-docs/plugin-quickstart-guide/
+Figma에서 오가닉 가이드 4개 시안을 한 번에 생성하는 플러그인입니다.
 
-This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
+## 주요 기능
 
-First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
-libraries. You can find the download link here:
+- 플러그인 내부에 정의된 4개 시안을 현재 페이지에 바로 생성
+- `직업명`, `연사명`, `디데이`, `이미지` 입력값 반영
+- 선택한 노드가 있으면 해당 위치 기준 생성
+- 선택한 노드가 없으면 현재 보이는 캔버스 영역 시작점 기준 생성
+- 구글 드라이브 파일 링크 또는 이미지 파일 업로드 지원
 
-  https://nodejs.org/en/download/
+## 파일 구성
 
-Next, install TypeScript using the command:
+- `manifest.json`: Figma 플러그인 설정 파일
+- `ui.html`: 플러그인 UI
+- `code.js`: 플러그인 메인 실행 코드
+- `framesData.json`, `merged-react-figma.json`: 시안/가이드 작업용 데이터
 
-  npm install -g typescript
+## 실행 방법
 
-Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
+1. Figma Desktop에서 `Plugins > Development > Import plugin from manifest...`를 선택합니다.
+2. 이 프로젝트의 `manifest.json`을 불러옵니다.
+3. 플러그인을 실행합니다.
+4. 입력값을 넣고 `Generate`를 누르면 시안 4개가 생성됩니다.
 
-  npm install --save-dev @figma/plugin-typings
+## 개발 메모
 
-If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
-is already valid Typescript code.
-
-TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
-
-For more information, visit https://www.typescriptlang.org/
-
-Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
-for the browser to run.
-
-We recommend writing TypeScript code using Visual Studio code:
-
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Open this directory in Visual Studio Code.
-3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "npm: watch". You will have to do this again every time
-    you reopen Visual Studio Code.
-
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+- 현재 실행 파일은 `code.js`입니다.
+- UI는 `ui.html`에서 직접 수정할 수 있습니다.
+- 구글 드라이브는 `폴더 링크`가 아니라 `이미지 파일 1개 공유 링크`를 사용해야 합니다.
